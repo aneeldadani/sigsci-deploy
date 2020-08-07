@@ -4,7 +4,7 @@
 This warehouse contains a list of playbooks based on OS, Application, and Signal Sciences playbook applicable to the module required. Each directory contains a specific set of playbooks based on OS and Application. Execute the playbooks in the following order:
             
 ## Installing software
-The `[software]_[os].yml` will provide you with a playbook to install the software applicable to your OS
+The `[software]_[os]-deployment-playbook.yml` will provide you with a playbook to install the software applicable to your OS
 
 ## Installing SigSci agent/module
 The `sigsci.yml` file in the var directory is where the Signal Sciences agent keys are stored. The playbook sigsci-*-deployment-playbook.yml to install the agent/module applicable to the environment. Be sure to fill in the variables:
