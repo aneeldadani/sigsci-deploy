@@ -14,4 +14,10 @@ The `sigsci.yml` file in the var directory is where the Signal Sciences agent ke
 ```
 
 ## Host file
-The host file is going to maintain the inventory. The host directory is located under the root of the ansible-playbooks directory.
+The host file is going to maintain the inventory. The host directory is located under the root of the ansible-playbooks directory. This hosts file uses INI format, but you can modify it to use YAML if you want:
+```
+[apache-servers]
+server1   ansible_host=174.138.13.97    ansible_connection=ssh
+server2   ansible_host=188.166.115.68   ansible_connection=ssh
+server3   ansible_host=188.166.123.245  ansible_connection=winrm
+```
