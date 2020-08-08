@@ -1,4 +1,4 @@
-# ansible-playbooks
+# Ansible Playbooks
 ## Warehouse for Ansible Playbooks
 
 This warehouse contains a list of playbooks based on OS, Application, and Signal Sciences playbook applicable to the module required. Each directory contains a specific set of playbooks based on OS and Application. Execute the playbooks in the following order:
