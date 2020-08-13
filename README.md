@@ -5,4 +5,4 @@ There are Ansible playbooks available to deploy the Signal Sciences agent and mo
 
 There is a Docker example which let's you deploy Signal Sciences alongside an Envoy Proxy in a container.
 
-If there are any issues, please report them in the Issues tab above ^.
+If there are any issues, please report them in the Issues tab above ^
