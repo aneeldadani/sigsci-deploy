@@ -3,7 +3,7 @@
   hosts: apache-servers
   become: true
   vars_files:
-    - ../../sigsci-deploy/vars/sigsci.yml
+    - ../../sigsci-deploy/vars/keys.yml
   tasks:
     - name: Create SigSci repo file
       file:
