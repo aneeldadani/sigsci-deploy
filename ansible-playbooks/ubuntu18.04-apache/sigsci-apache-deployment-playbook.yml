@@ -3,7 +3,7 @@
   hosts: apache-servers
   become: true
   vars_files:
-    - vars/sigsci.yml
+    - ../../sigsci-deploy/vars/sigsci.yml
   tasks:
     - name: Add an apt signing key
       apt_key:
