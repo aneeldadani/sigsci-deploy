@@ -1,5 +1,5 @@
 ---
-- name: Installing Apache software packages
+- name: Setting up server with Apache HTTP Server
   hosts: apache-servers
   become: true
   vars:
