@@ -1,18 +1,20 @@
 ---
-- name: Installing software packages
+- name: Deploying Signal Sciences to Apache Servers
   hosts: apache-servers
   become: true
   vars_files:
     - ../../sigsci-deploy/vars/keys.yml
   tasks:
-    - name: Add an apt signing key
+    - name: Add SigSci Package Repositories on Ubuntu 18.04
       apt_key:
         url: https://apt.signalsciences.net/gpg.key
         state: present
-    - name: Adding SigSci repo
+      when: ansible_os_family == "Ubuntu" and ansible_distribution_version == "18.04"
+    - name: Adding SigSci repo on Ubuntu 18.04
       apt_repository:
         repo: deb https://apt.signalsciences.net/release/ubuntu/ bionic main
         state: present
+      when: ansible_os_family == "Ubuntu" and ansible_distribution_version == "18.04"
     - name: Run apt-get update again
       apt:
         update_cache: yes
