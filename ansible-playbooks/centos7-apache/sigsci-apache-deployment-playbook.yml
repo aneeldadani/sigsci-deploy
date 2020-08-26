@@ -1,15 +1,15 @@
 ---
-- name: Installing software packages
+- name: Deploying Signal Sciences to Apache Servers
   hosts: apache-servers
   become: true
   vars_files:
     - ../../sigsci-deploy/vars/keys.yml
   tasks:
-    - name: Create SigSci repo file
+    - name: Add SigSci Package Repositories on CentOS7
       file:
         path: "/etc/yum.repos.d/sigsci.repo"
         state: touch
-    - name: Add package repository
+    - name: Adding SigSci repo on CentOS7
       blockinfile:
         path: /etc/yum.repos.d/sigsci.repo
         block: |
@@ -53,11 +53,12 @@
         name: sigsci-module-apache
         state: present
     - name: Update httpd configuration
-      lineinfile:
+      blockinfile:
         path: "/etc/httpd/conf/httpd.conf"
-        regexp: '^IncludeOptional conf.d/*.conf'
+        marker: "# {mark} SIGSCI BLOCK #"
         insertafter: 'IncludeOptional conf.d/*.conf'
-        line: 'LoadModule signalsciences_module /etc/httpd/modules/mod_signalsciences.so'
+        block: |
+          'LoadModule signalsciences_module /etc/httpd/modules/mod_signalsciences.so'
     - name: Restart Apache
       service:
         name: httpd
