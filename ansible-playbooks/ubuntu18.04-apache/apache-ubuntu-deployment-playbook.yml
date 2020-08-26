@@ -2,22 +2,26 @@
 - name: Installing Apache software packages
   hosts: apache-servers
   become: true
+  vars:
+    packages:
+      - name: apache2
+        required: True
+      - name: apt-transport-https
+        required: True
+      - name: wget
+        required: True
   tasks:
     - name: Run apt-get update
       apt:
         update_cache: yes
-    - name: Install Apache
+    - name: Install Apache and other packages
       apt:
-        name: apache2
+        name: "{{ item.name }}"
         state: present
+      when: item.required == True 
+      loop: "{{ packages }}"
     - name: Start Apache
       service:
         name: apache2
         state: started
-    - name: Installing other packages
-      action: >
-              {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
-      with_items:
-        - apt-transport-https
-        - wget
 
