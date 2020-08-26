@@ -1,3 +1,8 @@
+#################################################################################################
+# This deployment is based on Ubuntu 18.04 running NGINX 1.14.0
+# The installation of the Signal Sciences module on NGINX is based on the Ubuntu distribution
+#################################################################################################
+
 ---
 - name: Deploying Signal Sciences to NGINX Servers
   hosts: nginx-servers
