@@ -1,12 +1,18 @@
 ---
-- name: Installing Apache software packages
+- name: Setting up server with Apache HTTP Server
   hosts: apache-servers
   become: true
+  vars:
+    packages:
+      - name: httpd
+        required: True
   tasks:
-    - name: Install Apache
+    - name: Install Apache and other packages
       yum:
-        name: httpd
+        name: "{{ item.name }}"
         state: present
+      when: item.required == True 
+      loop: "{{ packages }}"
     - name: Start Apache
       service:
         name: httpd
