@@ -8,7 +8,7 @@
   hosts: nginx-servers
   become: true
   vars_files:
-    - ../../sigsci-deploy/vars/keys.yml
+    - ../vars/keys.yml
   tasks:
     - name: Add SigSci Package Repositories on Ubuntu 18.04
       apt_key:
