@@ -1,5 +1,5 @@
 ---
-- name: Deploying Signal Sciences 
+- name: Deploying Signal Sciences to NGINX Servers
   hosts: nginx-servers
   become: true
   vars_files:
