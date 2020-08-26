@@ -1,0 +1,27 @@
+---
+- name: Setting up server with NGINX
+  hosts: nginx-servers
+  become: true
+  vars:
+    packages:
+      - name: nginx
+        required: True
+      - name: apt-transport-https
+        required: True
+      - name: wget
+        required: True
+  tasks:
+    - name: Run apt-get update
+      apt:
+        update_cache: yes
+    - name: Install all packages
+      apt:
+        name: "{{ item.name }}"
+        state: present
+      when: item.required == True 
+      loop: "{{ packages }}"
+    - name: Start NGINX
+      service:
+        name: nginx
+        state: started
+
