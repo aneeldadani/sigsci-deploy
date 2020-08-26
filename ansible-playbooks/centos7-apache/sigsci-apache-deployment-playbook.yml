@@ -3,7 +3,7 @@
   hosts: apache-servers
   become: true
   vars_files:
-    - ../../ansible-playbooks/vars/keys.yml
+    - ../vars/keys.yml
   tasks:
     - name: Add SigSci Package Repositories on CentOS7
       file:
