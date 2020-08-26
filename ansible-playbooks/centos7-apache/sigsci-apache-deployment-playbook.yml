@@ -9,6 +9,7 @@
       file:
         path: "/etc/yum.repos.d/sigsci.repo"
         state: touch
+      when: ansible_os_family == "RedHat" and ansible_distribution_version == "7"
     - name: Adding SigSci repo on CentOS7
       blockinfile:
         path: /etc/yum.repos.d/sigsci.repo
@@ -22,6 +23,7 @@
                gpgkey=https://yum.signalsciences.net/release/gpgkey
                sslverify=1
                sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+      when: ansible_os_family == "RedHat" and ansible_distribution_version == "7"
     - name: Run yum update
       yum:
         name: "*"
