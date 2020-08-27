@@ -14,12 +14,14 @@
     - name: Run apt-get update
       apt:
         update_cache: yes
+        
     - name: Install Apache and other packages
       apt:
         name: "{{ item.name }}"
         state: present
       when: item.required == True 
       loop: "{{ packages }}"
+      
     - name: Start Apache
       service:
         name: apache2
