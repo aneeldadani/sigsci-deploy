@@ -10,48 +10,59 @@
         url: https://apt.signalsciences.net/gpg.key
         state: present
       when: ansible_os_family == "Ubuntu" and ansible_distribution_version == "18.04"
+      
     - name: Adding SigSci repo on Ubuntu 18.04
       apt_repository:
         repo: deb https://apt.signalsciences.net/release/ubuntu/ bionic main
         state: present
       when: ansible_os_family == "Ubuntu" and ansible_distribution_version == "18.04"
+      
     - name: Run apt-get update again
       apt:
         update_cache: yes
+        
     - name: Installing SigSci Agent
       apt:
         name: sigsci-agent
         state: present
+        
     - name: Create SigSci directory
       file:
         path: "/etc/sigsci/"
         state: directory
+        
     - name: Create agent.conf file
       file:
         path: "/etc/sigsci/agent.conf"
         state: touch
+        
     - name: Insert agent keys
       blockinfile:
         path: "/etc/sigsci/agent.conf"
         block: |
                accesskeyid= {{ agent_access_key }}
                secretaccesskey= {{ agent_secret_key }}
+               
     - name: Start SigSci Agent
       service:
         name: sigsci-agent
         state: started
+        
     - name: Install SigSci Apache Module
       apt:
         name: sigsci-module-apache
         state: present
+        
     - name: Enable SigSci Module for Apache
       apache2_module:
         state: present
         name: signalsciences
+        
     - name: Restart Apache
       service:
         name: apache2
         state: restarted
+        
     - name: Send GET Request
       uri:
         url: http://localhost
