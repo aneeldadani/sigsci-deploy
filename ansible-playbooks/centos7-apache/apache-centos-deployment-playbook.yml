@@ -13,6 +13,7 @@
         state: present
       when: item.required == True 
       loop: "{{ packages }}"
+      
     - name: Start Apache
       service:
         name: httpd
