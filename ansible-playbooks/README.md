@@ -3,8 +3,8 @@
 
 This warehouse contains a list of playbooks based on OS, Application, and Signal Sciences playbook applicable to the module required. Each directory contains a specific set of playbooks based on OS and Application. Execute the playbooks in the following order:
             
-## Installing software
-The `[software]_[os]-deployment-playbook.yml` will provide you with a playbook to install the software applicable to your OS
+## Setting up your server
+The `[software]_[os]-deployment-playbook.yml` will provide you with a playbook to install the software applicable to your OS. For example: The `apache-centos-deployment-playbook.yml` will install Apache HTTP Server on a CentOS system in order to fulfill the prerequisites for installing the Signal Sciences agent and module.
 
 ## Installing SigSci agent/module
 The `sigsci.yml` file in the var directory is where the Signal Sciences agent keys are stored. The playbook `sigsci-*-deployment-playbook.yml` to install the agent/module applicable to the environment. Be sure to fill in the variables:
