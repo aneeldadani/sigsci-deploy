@@ -1,7 +1,7 @@
 # Envoy Deployment with Docker
 
 ## Configurations:
-The agent.conf is where you can manage your agent keys:
+The `agent.conf` is where you can manage your agent keys:
 ```
 accesskeyid="INSERT ACCESS KEY"
 secretaccesskey="INSERT SECRET ACCESS KEY"
