@@ -1,9 +1,5 @@
 # Envoy Deployment with Docker
 
-## Prerequisites:
-* Docker <br />
-* Make
-
 ## Configurations:
 The agent.conf is where you can manage your agent keys:
 ```
