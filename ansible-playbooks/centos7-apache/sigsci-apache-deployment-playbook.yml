@@ -10,6 +10,7 @@
         path: "/etc/yum.repos.d/sigsci.repo"
         state: touch
       when: ansible_os_family == "RedHat" and ansible_distribution_version == "7"
+      
     - name: Adding SigSci repo on CentOS7
       blockinfile:
         path: /etc/yum.repos.d/sigsci.repo
@@ -24,36 +25,44 @@
                sslverify=1
                sslcacert=/etc/pki/tls/certs/ca-bundle.crt
       when: ansible_os_family == "RedHat" and ansible_distribution_version == "7"
+      
     - name: Run yum update
       yum:
         name: "*"
         state: latest
+        
     - name: Installing SigSci Agent
       yum:
         name: sigsci-agent
         state: present
+        
     - name: Create SigSci directory
       file:
         path: "/etc/sigsci/"
         state: directory
+        
     - name: Create agent.conf file
       file:
         path: "/etc/sigsci/agent.conf"
         state: touch
+        
     - name: Insert agent keys
       blockinfile:
         path: "/etc/sigsci/agent.conf"
         block: |
                accesskeyid= {{ agent_access_key }}
                secretaccesskey= {{ agent_secret_key }}
+               
     - name: Start SigSci Agent
       service:
         name: sigsci-agent
         state: started
+        
     - name: Install SigSci Apache Module
       yum:
         name: sigsci-module-apache
         state: present
+        
     - name: Update httpd configuration
       blockinfile:
         path: "/etc/httpd/conf/httpd.conf"
@@ -61,6 +70,7 @@
         insertafter: 'IncludeOptional conf.d/*.conf'
         block: |
           'LoadModule signalsciences_module /etc/httpd/modules/mod_signalsciences.so'
+          
     - name: Restart Apache
       service:
         name: httpd
