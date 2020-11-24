@@ -1,0 +1,12 @@
+---
+applications:
+  - name: name-of-app    #can be customized
+    memory: 1G    
+    random-route: true    #optional based on preference
+    buildpacks:    
+    - sigsci_cloudfoundry_buildpack    #required
+    - java_buildpack_offline           #required
+    path: build/libs/location-of-your.jar    #depends on your app
+    env:
+      SIGSCI_ACCESSKEYID: 'sigsci-accesskey'            #required
+      SIGSCI_SECRETACCESSKEY: 'sigsci-secretaccesskey'  #required
