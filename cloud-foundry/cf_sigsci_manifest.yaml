@@ -10,3 +10,4 @@ applications:
     env:
       SIGSCI_ACCESSKEYID: 'sigsci-accesskey'            #required
       SIGSCI_SECRETACCESSKEY: 'sigsci-secretaccesskey'  #required
+      SIGSCI_REVPROXY_LISTENER=: "example2:{listener=https://10.11.12.13:443,upstreams=https://192.168.1.2:8443,tls-cert=/etc/sigsci/server-cert.pem,tls-key=/etc/sigsci/server-key.pem}" #required if using HTTPS
