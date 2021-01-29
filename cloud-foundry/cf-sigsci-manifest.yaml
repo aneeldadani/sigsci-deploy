@@ -13,4 +13,4 @@ applications:
       #required if using HTTP
       SIGSCI_REVPROXY_LISTENER: "example1:{listener=http://10.11.12.13:80,upstreams=http://192.168.1.2:80}"
       #required if using HTTPS
-      SIGSCI_REVPROXY_LISTENER=: "example2:{listener=https://10.11.12.13:443,upstreams=https://192.168.1.2:8443,tls-cert=/etc/sigsci/server-cert.pem,tls-key=/etc/sigsci/server-key.pem}" 
+      SIGSCI_REVPROXY_LISTENER: "example2:{listener=https://10.11.12.13:443,upstreams=https://192.168.1.2:8443,tls-cert=/etc/sigsci/server-cert.pem,tls-key=/etc/sigsci/server-key.pem}" 
